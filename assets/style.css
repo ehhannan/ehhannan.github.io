@@ -57,16 +57,17 @@ a:hover{ color: var(--hover); }
   width: 36px; height: 36px; border-radius: 9999px; box-shadow: var(--shadow);
 }
 
+/* ----- Header / Nav ----- */
 .menu{ display: flex; gap: 18px; }
 .menu a{
   position: relative;
   padding: 6px 2px;
   font-weight: 500;
   color: var(--text);
-  transition: color 0.2s ease;
+  transition: color .2s ease;
 }
 
-/* Active page = souligné */
+/* Page active = barre soulignée */
 .menu a.active::after{
   content: "";
   position: absolute;
@@ -75,10 +76,13 @@ a:hover{ color: var(--hover); }
   background: var(--accent);
 }
 
-/* Hover = juste couleur bleue (plus de soulignement) */
-.menu a:hover{
+/* Hover = juste couleur bleue (pas de soulignement) */
+.menu a:hover,
+.menu a:focus-visible{
   color: var(--hover);
+  text-decoration: none;
 }
+
 
 /* ----- Hero / About ----- */
 .hero{
