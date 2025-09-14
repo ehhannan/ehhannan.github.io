@@ -1,7 +1,7 @@
 /* ===== Base scale (ZOOM GLOBAL) ===== */
 html{
   /* 100% ≈ 16px ; 125% ≈ 20px ; 130% ≈ 20.8px */
-  font-size: 165%;
+  font-size: 140%;
 }
 
 :root{
