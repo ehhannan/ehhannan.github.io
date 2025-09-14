@@ -1,4 +1,3 @@
-
 /* ----- Base ----- */
 :root{
   --bg: #ffffff;
@@ -9,6 +8,8 @@
   --link: #111827;
   --chip: #f3f4f6;       /* gray-100 */
   --shadow: 0 8px 30px rgba(0,0,0,0.06);
+
+  --hover: #2563eb;      /* bleu pour hover */
 }
 
 *{ box-sizing: border-box; }
@@ -22,7 +23,7 @@ html, body{
 
 img{ max-width: 100%; height: auto; display: block; }
 a{ color: var(--link); text-decoration: none; }
-a:hover{ text-decoration: underline; }
+a:hover{ color: var(--hover); }
 
 .container{
   max-width: 980px;
@@ -62,16 +63,21 @@ a:hover{ text-decoration: underline; }
   padding: 6px 2px;
   font-weight: 500;
   color: var(--text);
+  transition: color 0.2s ease;
 }
-.menu a.active::after,
-.menu a:hover::after{
+
+/* Active page = souligné */
+.menu a.active::after{
   content: "";
   position: absolute;
   left: 0; bottom: -6px;
   width: 100%; height: 2px;
   background: var(--accent);
-  transform: scaleX(1);
-  transition: transform 200ms ease;
+}
+
+/* Hover = juste couleur bleue (plus de soulignement) */
+.menu a:hover{
+  color: var(--hover);
 }
 
 /* ----- Hero / About ----- */
