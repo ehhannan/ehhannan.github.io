@@ -176,7 +176,22 @@ a:hover{ color: var(--hover); }
   .menu{ gap: 0.75rem; }
 }
 
+html, body {
+  height: 100%;
+}
+
 body {
-  background: linear-gradient(180deg, #f9fafb 0%, #ffffff 100%);
+  margin: 0;
+  color: var(--text);
+  /* fallback + gradient plus visible */
+  background-color: #e5e7eb;
+  background-image: linear-gradient(180deg, #e5e7eb 0%, #ffffff 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* optionnel, donne un léger effet parallax */
+  background-size: 100% 100%;
+
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  line-height: 1.7;
+  font-size: 20px;
 }
 
