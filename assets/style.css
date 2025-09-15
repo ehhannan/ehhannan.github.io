@@ -309,4 +309,41 @@ body {
   .menu a:hover{ background:var(--chip); color:var(--text); }
 }
 
+/* === PATCH HAMBURGER (collez à la toute fin de style.css) === */
 
+/* Contexte pour le menu déroulant */
+.nav { position: relative; }
+
+/* Par défaut (desktop) */
+.menu-toggle { display: none; }
+
+/* MOBILE UNIQUEMENT — élargissons un peu le seuil pour tester (900px) */
+@media (max-width: 900px){
+  /* le bouton apparaît */
+  .menu-toggle{
+    display: inline-flex !important;
+    align-items: center; gap: 8px;
+    border: 1px solid var(--line);
+    background: #fff; border-radius: 10px;
+    padding: 8px 10px; line-height: 0;
+    box-shadow: var(--shadow); cursor: pointer;
+    z-index: 31;
+  }
+
+  /* le menu est caché par défaut en mobile */
+  .menu{
+    position: absolute; left: 0; right: 0; top: calc(100% + 6px);
+    display: none !important;               /* on ECRASE toute règle précédente */
+    flex-direction: column; gap: 0;
+    background: rgba(255,255,255,0.98);
+    border-bottom: 1px solid var(--line);
+    box-shadow: var(--shadow);
+    padding: 6px 14px 10px;
+    backdrop-filter: saturate(180%) blur(8px);
+    z-index: 30;
+  }
+  /* quand JS ajoute .open, on l’affiche */
+  .menu.open{ display: flex !important; }
+  .menu a{ padding: 12px 2px; border-radius: 8px; }
+  .menu a:hover{ background: var(--chip); color: var(--text); }
+}
