@@ -431,3 +431,34 @@ body {
     box-shadow: none !important;
   }
 }
+
+/* === Animation hamburger -> X (mobile) === */
+@media (max-width: 800px){
+  .menu-toggle{
+    position: relative;
+    width: 34px;   /* zone de clic un peu plus large */
+    height: 34px;
+  }
+
+  .menu-toggle .bar{
+    transition: transform .18s ease, opacity .18s ease;
+    transform-origin: 50% 50%;
+  }
+
+  /* État "ouvert" (classe posée sur le bouton) */
+  .menu-toggle.is-open .bar:nth-child(1){
+    transform: translateY(8px) rotate(45deg);
+  }
+  .menu-toggle.is-open .bar:nth-child(2){
+    opacity: 0;
+    transform: scaleX(0.5);
+  }
+  .menu-toggle.is-open .bar:nth-child(3){
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  /* Respecte "prefers-reduced-motion" */
+  @media (prefers-reduced-motion: reduce){
+    .menu-toggle .bar{ transition: none; }
+  }
+}
