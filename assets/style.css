@@ -203,3 +203,27 @@ body {
 /* Nom dans la barre du haut : taille stable sur toutes les pages */
 .brand { font-size: 1rem; }
 .brand span { font-size: 1rem; line-height: 1; }
+
+/* === PATCH: forcer le menu horizontal en mobile, sans hamburger === */
+@media (max-width: 720px){
+  /* le menu doit rester visible et horizontal (wrap si besoin) */
+  .menu{
+    position: static !important;   /* annule tout position:absolute hérité */
+    display: flex !important;      /* annule display:none de vieux styles */
+    flex-direction: row !important;
+    flex-wrap: wrap !important;    /* passe sur 2 lignes proprement */
+    gap: 10px 12px !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    border: 0 !important;
+  }
+  /* s’il reste des règles .menu.open, on les neutralise */
+  .menu.open{ display: flex !important; }
+}
+
+/* sécurité : il ne doit plus exister de bouton hamburger */
+.menu-toggle,
+.menu-wrap,
+.nav-toggle{ display: none !important; }
+
