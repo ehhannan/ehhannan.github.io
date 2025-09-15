@@ -1,13 +1,10 @@
 /* =========================================================
    Lien actif dans la navigation
-   - Robustifie pour /, /index.html, ?query, #hash, etc.
    ========================================================= */
 (function () {
-  // "/index.html", "/", "/talks.html?x#y" -> "index.html" / "talks.html"
   const raw = location.pathname.split('/').pop();
   const path = raw && raw !== '/' ? raw.split('?')[0].split('#')[0] : 'index.html';
 
-  // Sélectionne tous les liens du menu (présents sur toutes les pages)
   document.querySelectorAll('.menu a').forEach(a => {
     const href = (a.getAttribute('href') || '').split('?')[0].split('#')[0];
     const isIndex = (path === 'index.html') && (href === '' || href === 'index.html' || href === '/');
@@ -17,76 +14,68 @@
 })();
 
 /* =========================================================
-   Menu hamburger (< 800px)
-   - Bouton .menu-toggle + menu #site-menu
-   - Ferme sur clic d'un lien, clic extérieur, Escape, et resize > 800px
-   - Met à jour aria-expanded / aria-label
+   Menu hamburger (avec auto-injection du bouton si absent)
    ========================================================= */
 document.addEventListener('DOMContentLoaded', function () {
-  const btn  = document.querySelector('.menu-toggle');
-  const menu = document.getElementById('site-menu');
-  if (!btn || !menu) return;
-
-  const OPEN_CLASS = 'open';
   const BP = 800;
 
-  function setAria(open) {
+  // Trouve le nav container et le menu
+  const navContainer = document.querySelector('.header .container.nav') || document.querySelector('.nav');
+  const menu = document.getElementById('site-menu') || document.querySelector('.menu');
+  if (!navContainer || !menu) return;
+
+  // S'il n'y a PAS de bouton, on le crée et on l'insère avant le menu
+  let btn = document.querySelector('.menu-toggle');
+  if (!btn) {
+    btn = document.createElement('button');
+    btn.className = 'menu-toggle';
+    btn.setAttribute('aria-controls', 'site-menu');
+    btn.setAttribute('aria-expanded', 'false');
+    btn.setAttribute('aria-label', 'Ouvrir le menu');
+    btn.innerHTML = '<span class="bar"></span><span class="bar"></span><span class="bar"></span>';
+
+    // si le menu n'a pas d'id, on lui en met un
+    if (!menu.id) menu.id = 'site-menu';
+
+    // insère le bouton juste avant le menu
+    navContainer.insertBefore(btn, menu);
+  }
+
+  const OPEN_CLASS = 'open';
+
+  function isOpen(){ return menu.classList.contains(OPEN_CLASS); }
+  function setAria(open){
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
     btn.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
   }
+  function openMenu(){ menu.classList.add(OPEN_CLASS); setAria(true); }
+  function closeMenu(){ menu.classList.remove(OPEN_CLASS); setAria(false); }
 
-  function isOpen() {
-    return menu.classList.contains(OPEN_CLASS);
-  }
+  // Toggle
+  btn.addEventListener('click', () => { isOpen() ? closeMenu() : openMenu(); });
 
-  function openMenu() {
-    menu.classList.add(OPEN_CLASS);
-    setAria(true);
-  }
-
-  function closeMenu() {
-    menu.classList.remove(OPEN_CLASS);
-    setAria(false);
-  }
-
-  // Toggle au clic sur le bouton
-  btn.addEventListener('click', () => {
-    isOpen() ? closeMenu() : openMenu();
-  });
-
-  // Fermer après clic sur un lien (meilleure UX mobile)
+  // Ferme après clic sur un lien
   menu.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      if (isOpen()) closeMenu();
-    });
+    a.addEventListener('click', () => { if (isOpen()) closeMenu(); });
   });
 
-  // Fermer au clic extérieur
+  // Clic extérieur
   document.addEventListener('click', (evt) => {
     if (!isOpen()) return;
-    const target = evt.target;
-    const clickedInsideMenu = menu.contains(target);
-    const clickedButton = btn.contains(target);
-    if (!clickedInsideMenu && !clickedButton) {
-      closeMenu();
-    }
+    const t = evt.target;
+    if (!menu.contains(t) && !btn.contains(t)) closeMenu();
   });
 
-  // Fermer sur Escape
+  // Escape
   document.addEventListener('keydown', (evt) => {
-    if (evt.key === 'Escape' && isOpen()) {
-      closeMenu();
-      btn.focus();
-    }
+    if (evt.key === 'Escape' && isOpen()) { closeMenu(); btn.focus(); }
   });
 
-  // Fermer si on repasse > 800px
+  // Resize: repasse en mode desktop proprement
   window.addEventListener('resize', () => {
-    if (window.innerWidth > BP && isOpen()) {
-      closeMenu();
-    }
+    if (window.innerWidth > BP && isOpen()) closeMenu();
   });
 
-  // État initial aria
+  // État initial
   setAria(false);
 });
