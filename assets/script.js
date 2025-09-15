@@ -110,3 +110,35 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+// --- Cartes cliquables publications ---
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.card[data-href]').forEach(card => {
+    const url = card.getAttribute('data-href');
+    if (!url) return;
+
+    card.classList.add('is-clickable');
+    card.setAttribute('role', 'link');
+    card.setAttribute('tabindex', '0'); // navigation clavier
+
+    function go(e) {
+      // Si l'utilisateur ctrl/cmd-clic, ouvre en nouvel onglet
+      const target = card.getAttribute('data-target') || (e && (e.metaKey || e.ctrlKey) ? '_blank' : '_self');
+      window.open(url, target);
+    }
+
+    // Clic sur la carte (mais on laisse tranquilles les vrais boutons/links internes)
+    card.addEventListener('click', (e) => {
+      if (e.target.closest('a, button, input, textarea, select, summary')) return;
+      go(e);
+    });
+
+    // Activation clavier (Enter ou Space)
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        go(e);
+      }
+    });
+  });
+});
+
