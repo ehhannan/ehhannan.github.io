@@ -1,96 +1,225 @@
-/* =========================================================
-   Base
-   ========================================================= */
-:root {
-  --text: #111;
-  --bg: #fff;
-  --accent: #005bbb;
-  --accent-light: #4ea5ff;
-  --line: #ddd;
-  --shadow: 0 2px 4px rgba(0,0,0,0.1);
-  --radius: 6px;
-  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+/* ===== Base scale (ZOOM GLOBAL) ===== */
+html{
+  /* 100% ≈ 16px ; ajuste si tu veux */
+  font-size: 95%;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+:root{
+  --bg: #ffffff;
+  --text: #1a1a1a;
+  --muted: #6b7280;      /* gray-500 */
+  --line: #e5e7eb;       /* gray-200 */
+  --accent: #111827;     /* gray-900 */
+  --link: #111827;
+  --chip: #f3f4f6;       /* gray-100 */
+  --shadow: 0 8px 30px rgba(0,0,0,0.06);
+  --hover: #2563eb;      /* blue for hover */
+}
 
-html { font-size: 16px; }
+*{ box-sizing: border-box; }
+
 body {
-  font-family: var(--font);
+  margin: 0;
   color: var(--text);
-  background: var(--bg);
-  line-height: 1.6;
+  background: linear-gradient(180deg, #e5e7eb 0%, #ffffff 100%);
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 20px;   /* taille de base du texte */
+  line-height: 1.7;
 }
 
-/* =========================================================
-   Layout
-   ========================================================= */
-.container {
-  max-width: 960px;
+img{ max-width: 100%; height: auto; display: block; }
+
+a{
+  color: var(--link);
+  text-decoration: none;
+  transition: color .2s ease;
+}
+a:hover{ color: var(--hover); }
+
+.container{
+  max-width: 980px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 1.2rem;
 }
 
-header.header {
-  background: #fff;
-  border-bottom: 1px solid var(--line);
-  box-shadow: var(--shadow);
+/* ===== Header / Nav (menu horizontal) ===== */
+.header{
   position: sticky;
   top: 0;
-  z-index: 50;
+  z-index: 20;
+  backdrop-filter: saturate(180%) blur(8px);
+  border-bottom: 1px solid var(--line);
+  background: rgba(255,255,255,0.8);
 }
 
-.header .container.nav {
+.nav{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: .75rem 0;
-  position: relative;
+  height: 4rem;
+  padding: 0.25rem 0;
 }
 
-.brand {
-  display: flex;
+.brand{
+  display: flex; align-items: center; gap: 0.75rem;
+  font-weight: 700; letter-spacing: 0.2px;
+  font-size: 1rem;
+}
+.brand img{
+  width: 2.25rem; height: 2.25rem;
+  border-radius: 9999px; box-shadow: var(--shadow);
+}
+
+/* Menu horizontal simple (pas de hamburger) */
+.menu{
+  display: flex; gap: 1.125rem; /* ~18px */
   align-items: center;
-  gap: .5rem;
-  font-weight: bold;
+  flex-wrap: nowrap;
 }
-.brand img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+.menu a{
+  position: relative;
+  padding: 0.375rem 0.125rem;
+  font-weight: 500;
+  color: var(--text);
+  transition: color .2s ease;
 }
+/* Active page = barre soulignée */
+.menu a.active::after{
+  content: "";
+  position: absolute;
+  left: 0; bottom: -0.375rem;
+  width: 100%; height: 0.125rem;
+  background: var(--accent);
+}
+/* Hover = bleu, pas de soulignement en plus */
+.menu a:hover,
+.menu a:focus-visible{
+  color: var(--hover);
+  text-decoration: none;
+}
+
+/* ===== Hero / About ===== */
+.hero{
+  display: grid;
+  grid-template-columns: 10rem 1fr; /* 160px */
+  gap: 1.5rem; /* 24px */
+  padding: 3rem 0 1.5rem;
+}
+.avatar{
+  width: 10rem; height: 10rem;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--line);
+}
+.hero h1{
+  margin: 0 0 0.5rem 0;
+  font-size: 1.9rem;
+  line-height: 1.2;
+}
+.hero p.lead{
+  margin: 0 0 0.75rem;
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.chips{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.625rem;
+}
+.chip{
+  padding: 0.375rem 0.625rem;
+  background: var(--chip);
+  border-radius: 999px;
+  font-size: 0.9rem;
+  border: 1px solid var(--line);
+}
+
+/* ===== Sections & Cards ===== */
+.section{ padding: 1.125rem 0 2.25rem; }
+.section h2{
+  font-size: 1.25rem;
+  margin: 0 0 0.5rem;
+  font-weight: 600;
+}
+
+.card{
+  border: 1px solid var(--line);
+  border-radius: 0.875rem;
+  padding: 1rem;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+  box-shadow: 0 0 0 rgba(0,0,0,0);
+  background: #fff;
+}
+.card:hover{
+  transform: translateY(-0.125rem);
+  box-shadow: var(--shadow);
+}
+
+.list{ display: grid; gap: 0.625rem; }
+
+.item-title{ font-weight: 600; font-size: 1.15rem; }
+.item-meta{ color: var(--muted); font-size: 0.95rem; }
+.card p{
+  font-size: 0.95rem;
+  margin-top: 0.4rem;
+  margin-bottom: 0;
+}
+
+/* ===== Footer ===== */
+.footer{
+  border-top: 1px solid var(--line);
+  padding: 1.75rem 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-top: 1.875rem;
+}
+
+/* ===== Responsive (sans hamburger) ===== */
+@media (max-width: 720px){
+  html{ font-size: 100%; }
+  .nav{ flex-wrap: wrap; height: auto; gap: 8px; padding: 8px 0; }
+  .brand img{ width: 32px; height: 32px; }
+  /* Le menu reste horizontal mais peut aller sur 2 lignes proprement */
+  .menu{ flex-wrap: wrap; gap: 10px 12px; }
+  .menu a{ padding: 8px 0; }
+  .hero{ grid-template-columns: 1fr; padding: 24px 0 12px; gap: 16px; }
+  .avatar{ width: 96px; height: 96px; }
+  .card{ padding: 14px; }
+}
+
+/* === Nettoyage / cohérence === */
+html, body { height: 100%; }
+body {
+  background-color: #e5e7eb;                 /* fallback gradient */
+  background-image: linear-gradient(180deg, #e5e7eb 0%, #ffffff 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+
+/* Nom dans la barre du haut : taille stable sur toutes les pages */
+.brand { font-size: 1rem; }
+.brand span { font-size: 1rem; line-height: 1; }
 
 /* =========================================================
-   Navigation
+   HAMBURGER — ajouts minimalistes, esthétique inchangée
+   Seuil: < 800px  (mobile/tablette)
+   - le bouton apparaît
+   - le menu se replie, fond blanc + ombre + bord comme tes cartes/header
    ========================================================= */
-.menu {
-  display: flex;
-  gap: 1.5rem;
-}
-.menu a {
-  text-decoration: none;
-  color: var(--text);
-  font-weight: 500;
-  padding-bottom: .25rem;
-  transition: color .2s ease, border-color .2s ease;
-}
-.menu a:hover {
-  color: var(--accent);
-}
-.menu a.active {
-  border-bottom: 2px solid var(--accent);
-  color: var(--accent);
-}
 
-/* --- Bouton hamburger (caché par défaut) --- */
-.menu-toggle {
+/* Bouton hamburger (caché par défaut desktop) */
+.menu-toggle{
   display: none;
   border: 0;
   background: transparent;
   cursor: pointer;
   padding: .5rem;
 }
-.menu-toggle .bar {
+.menu-toggle .bar{
   display: block;
   width: 22px;
   height: 2px;
@@ -99,53 +228,43 @@ header.header {
   transition: transform .2s ease, opacity .2s ease;
 }
 
-/* =========================================================
-   Main / Footer
-   ========================================================= */
-main {
-  padding: 2rem 1rem;
-}
-footer {
-  border-top: 1px solid var(--line);
-  padding: 2rem 1rem;
-  text-align: center;
-  font-size: .9rem;
-  color: #666;
-}
-
-/* =========================================================
-   Responsive (menu hamburger)
-   ========================================================= */
-@media (max-width: 800px) {
-  /* Bouton visible */
-  .menu-toggle {
+/* Règles hamburger sous 800px */
+@media (max-width: 800px){
+  /* Affiche le bouton, conserve ta barre de nav (4rem) */
+  .menu-toggle{
     display: inline-flex;
     align-items: center;
     justify-content: center;
   }
 
-  /* Menu replié */
-  .menu {
+  /* Menu replié par défaut (caché) */
+  .menu{
     display: none;
-    flex-direction: column;
     position: absolute;
-    top: 4rem;
-    left: 0;
-    right: 0;
+    left: 0; right: 0;
+    top: 4rem;                 /* sous la barre */
     background: #fff;
     border-bottom: 1px solid var(--line);
     box-shadow: var(--shadow);
-    padding: .5rem 1rem;
+    flex-direction: column;
+    gap: 0;
+    padding: 0.5rem 1.2rem;
     z-index: 25;
   }
 
-  .menu a {
+  .menu a{
     width: 100%;
-    padding: .75rem 0;
+    padding: 0.75rem 0;
   }
 
-  /* Menu ouvert */
-  .menu.open {
-    display: flex;
-  }
+  /* Ouvert */
+  .menu.open{ display: flex; }
+
+  /* Le conteneur nav devient référentiel du menu */
+  .nav{ position: relative; }
 }
+
+/* ====== FIN HAMBURGER ====== */
+
+/* (Supprimé) Ancien PATCH qui bloquait le hamburger et cachait le bouton */
+/* Il neutralisait .menu.open et .menu-toggle — on ne le remet pas */
