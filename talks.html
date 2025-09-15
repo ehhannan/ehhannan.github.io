@@ -7,8 +7,18 @@
   <meta name="description" content="Talks: conferences and seminars" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="assets/style.css?v=3">
-  <script src="assets/script.js?v=3" defer></script>
+  <link rel="stylesheet" href="assets/style.css?v=15">
+  <script src="assets/script.js?v=15" defer></script>
+
+  <!-- (Optionnel) curseur + focus pour cartes cliquables -->
+  <style>
+    .card.is-clickable { cursor: pointer; }
+    .card.is-clickable:focus {
+      outline: 2px solid var(--hover);
+      outline-offset: 3px;
+      border-radius: 0.875rem;
+    }
+  </style>
 </head>
 <body>
 <header class="header">
@@ -37,66 +47,64 @@
   </div>
 </header>
 
+<main class="container">
+  <section class="section">
+    <h2>Conferences</h2>
+    <div class="list">
 
-  <main class="container">
-    <section class="section">
-      <h2>Conferences</h2>
-      <div class="list">
+      <article class="card" data-href="https://www2.cms.math.ca/Events/summer25/abs/ado" data-target="_blank">
+        <div class="item-title">CatMADS: categorical variables with the MADS algorithm</div>
+        <div class="item-meta">Canadian Mathematical Society Summer Meeting — Québec, QC — June 2025</div>
+      </article>
 
-        <article class="card">
-          <div class="item-title">CatMADS: categorical variables with the MADS algorithm</div>
-          <div class="item-meta">Canadian Mathematical Society Summer Meeting — Québec, QC — June 2025 : https://www2.cms.math.ca/Events/summer25/abs/ado</div>
-        </article>
+      <article class="card" data-href="https://symposia.cirrelt.ca/JOPT2025/fr/schedule?slot_id=2652" data-target="_blank">
+        <div class="item-title">CatMADS: categorical variables with the MADS algorithm</div>
+        <div class="item-meta">Optimization Days (JOPT), GERAD & CIRRELT — Montréal, QC — May 2025</div>
+      </article>
 
-        <article class="card">
-          <div class="item-title">CatMADS: categorical variables with the MADS algorithm</div>
-          <div class="item-meta">Optimization Days (JOPT), GERAD & CIRRELT — Montréal, QC — May 2025 : https://symposia.cirrelt.ca/JOPT2025/fr/schedule?slot_id=2652</div>
-        </article>
+      <article class="card" data-href="https://ismp2024.gerad.ca/schedule/people/664" data-target="_blank">
+        <div class="item-title">A graph-structured distance for heterogeneous datasets with meta variables</div>
+        <div class="item-meta">25th International Symposium on Mathematical Programming (ISMP) — Montréal, QC — July 2024</div>
+        <p>Session chair: Challenging derivative-free optimization and simulation-based optimization 2.</p>
+      </article>
 
-        <article class="card">
-          <div class="item-title">A graph-structured distance for heterogeneous datasets with meta variables</div>
-          <div class="item-meta">25th International Symposium on Mathematical Programming (ISMP) — Montréal, QC — July 2024 : https://ismp2024.gerad.ca/schedule/people/664</div>
-          <p>Session chair: Challenging derivative-free optimization and simulation-based optimization 2.</p>
-        </article>
+      <article class="card" data-href="https://symposia.gerad.ca/jopt2024/en/schedule?slot_id=2347" data-target="_blank">
+        <div class="item-title">A graph-structured distance for heterogeneous datasets with meta variables</div>
+        <div class="item-meta">Optimization Days (JOPT), GERAD & CIRRELT — Montréal, QC — May 2024</div>
+      </article>
 
-        <article class="card">
-          <div class="item-title">A graph-structured distance for heterogeneous datasets with meta variables</div>
-          <div class="item-meta">Optimization Days (JOPT), GERAD & CIRRELT — Montréal, QC — May 2024 : https://symposia.gerad.ca/jopt2024/en/schedule?slot_id=2347</div>
-        </article>
+      <article class="card" data-href="https://iciam2023.org/registered_data?id=00891#03192" data-target="_blank">
+        <div class="item-title">A General Blackbox Optimization Framework for Hyperparameter Optimization in Deep Learning</div>
+        <div class="item-meta">10th International Congress on Industrial and Applied Mathematics (ICIAM 2023 Tokyo) — Tokyo, Japan — August 2023</div>
+      </article>
 
-        <article class="card">
-          <div class="item-title">A General Blackbox Optimization Framework for Hyperparameter Optimization in Deep Learning</div>
-          <div class="item-meta">10th International Congress on Industrial and Applied Mathematics (ICIAM 2023 Tokyo) — Tokyo, Japan — August 2023 : https://iciam2023.org/registered_data?id=00891#03192</div>
-        </article>
+      <article class="card" data-href="https://symposia.cirrelt.ca/CORS-JOPT/en/schedule?slot_id=2159" data-target="_blank">
+        <div class="item-title">A General Blackbox Optimization Framework for Hyperparameter Optimization in Deep Learning</div>
+        <div class="item-meta">Optimization Days (JOPT), GERAD & CIRRELT — Montréal, QC — May 2023</div>
+        <p>Session chair: Derivative-free and blackbox optimization V.</p>
+      </article>
 
-        <article class="card">
-          <div class="item-title">A General Blackbox Optimization Framework for Hyperparameter Optimization in Deep Learning</div>
-          <div class="item-meta">Optimization Days (JOPT), GERAD & CIRRELT — Montréal, QC — May 2023 : https://symposia.cirrelt.ca/CORS-JOPT/en/schedule?slot_id=2159</div>
-          <p>Session chair: Derivative-free and blackbox optimization V.</p>
-        </article>
+      <article class="card" data-href="https://meetings.siam.org/sess/dsp_programsess.cfm?SESSIONCODE=75255" data-target="_blank">
+        <div class="item-title">A General Blackbox Optimization Framework for Hyperparameter Optimization in Deep Learning</div>
+        <div class="item-meta">SIAM Conference on Computational Science and Engineering (CSE23) — Amsterdam, Netherlands — March 2023</div>
+      </article>
 
-        <article class="card">
-          <div class="item-title">A General Blackbox Optimization Framework for Hyperparameter Optimization in Deep Learning</div>
-          <div class="item-meta">SIAM Conference on Computational Science and Engineering (CSE23) — Amsterdam, Netherlands — March 2023 : https://meetings.siam.org/sess/dsp_programsess.cfm?SESSIONCODE=75255</div>
-        </article>
+      <article class="card" data-href="https://symposia.gerad.ca/jopt2022/en/schedule?slot_id=2023" data-target="_blank">
+        <div class="item-title">Notation framework for hyperparameter tuning in deep learning</div>
+        <div class="item-meta">Optimization Days (JOPT), GERAD & CIRRELT — Montréal, QC — May 2022</div>
+      </article>
 
-        <article class="card">
-          <div class="item-title">Notation framework for hyperparameter tuning in deep learning</div>
-          <div class="item-meta">Optimization Days (JOPT), GERAD & CIRRELT — Montréal, QC — May 2022 : https://symposia.gerad.ca/jopt2022/en/schedule?slot_id=2023</div>
-        </article>
+      <article class="card" data-href="https://ivado.ca/evenements/octobre-numerique-ivado-2021/" data-target="_blank">
+        <div class="item-title">Cadre mathématique pour l’optimisation des hyperparamètres en I.A.</div>
+        <div class="item-meta">Octobre numérique, IVADO — Provincial conference — October 2021</div>
+      </article>
 
-        <article class="card">
-          <div class="item-title">Cadre mathématique pour l’optimisation des hyperparamètres en I.A.</div>
-          <div class="item-meta">Octobre numérique, IVADO — Provincial conference — October 2021 : https://ivado.ca/evenements/octobre-numerique-ivado-2021/</div>
-        </article>
+    </div>
+  </section>
+</main>
 
-      </div>
-    </section>
-
-  <footer class="footer">
-    <div class="container">© 2025 Edward Hallé-Hannan</div>
-  </footer>
-  <script src="assets/script.js"></script>
+<footer class="footer">
+  <div class="container">© 2025 Edward Hallé-Hannan</div>
+</footer>
 </body>
 </html>
-<script src="assets/script.js?v=13"></script>
