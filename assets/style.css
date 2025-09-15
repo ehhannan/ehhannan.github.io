@@ -535,3 +535,14 @@ body {
     .menu-toggle .bar{ transition: none; }
   }
 }
+
+/* Lien dans .lead = gris pâle, devient bleu au survol */
+.lead a:link,
+.lead a:visited {
+  color: var(--muted);
+}
+
+.lead a:hover,
+.lead a:focus-visible {
+  color: var(--hover);
+}
