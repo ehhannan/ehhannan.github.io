@@ -223,4 +223,28 @@ body {
   .card{ padding: 14px; }
 }
 
+/* Desktop par défaut: bouton caché, menu normal */
+.menu-toggle{ display:none; }
+
+/* ----- Mobile: hamburger uniquement ----- */
+@media (max-width: 720px){
+  .nav{ flex-wrap: wrap; height:auto; gap:8px; padding:8px 0; }
+  .menu-toggle{
+    display:inline-flex; align-items:center; gap:8px;
+    border:1px solid var(--line); background:#fff; border-radius:10px;
+    padding:8px 10px; line-height:0; box-shadow:var(--shadow); cursor:pointer;
+  }
+  /* Le menu devient un panneau déroulant, caché par défaut */
+  .menu{
+    position:absolute; left:0; right:0; top:calc(100% + 6px);
+    display:none; flex-direction:column; gap:0;
+    background:rgba(255,255,255,0.98); border-bottom:1px solid var(--line);
+    box-shadow:var(--shadow); padding:6px 14px 10px; backdrop-filter:saturate(180%) blur(8px);
+    z-index:30;
+  }
+  .menu.open{ display:flex; }
+  .menu a{ padding:12px 2px; border-radius:8px; }
+  .menu a:hover{ background:var(--chip); color:var(--text); }
+}
+
 
