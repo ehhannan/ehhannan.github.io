@@ -1,16 +1,14 @@
-// ----- Active nav link (plus robuste) -----
+// ----- Active nav link (robuste) -----
 (function(){
-  // Ex: "/index.html", "/", "/talks.html?x#y" -> "index.html" ou "talks.html"
+  // "/index.html", "/", "/talks.html?x#y" -> "index.html" / "talks.html"
   const raw = location.pathname.split('/').pop();
   const path = raw && raw !== '/' ? raw.split('?')[0].split('#')[0] : 'index.html';
 
   document.querySelectorAll('.menu a').forEach(a => {
     const href = (a.getAttribute('href') || '').split('?')[0].split('#')[0];
-    if (href === path || (path === 'index.html' && (href === '' || href === 'index.html'))) {
-      a.classList.add('active');
-    } else {
-      a.classList.remove('active');
-    }
+    a.classList.toggle('active',
+      href === path || (path === 'index.html' && (href === '' || href === 'index.html'))
+    );
   });
 })();
 
@@ -34,32 +32,30 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  // Toggle menu
+  // Toggle
   btn.addEventListener('click', function () {
     const open = menu.classList.toggle('open');
     setIcon(open);
   });
 
-  // Fermer après clic sur un lien (ou son icône interne)
+  // Fermer après clic sur un lien (ou icône dans le lien)
   menu.addEventListener('click', function (e) {
     const link = e.target.closest('a');
-    if (link) { closeMenu(); }
+    if (link) closeMenu();
   });
 
-  // Fermer si clic en dehors du menu et du bouton
+  // Fermer si clic en dehors
   document.addEventListener('click', function(e){
-    if (!menu.contains(e.target) && !btn.contains(e.target)) {
-      closeMenu();
-    }
+    if (!menu.contains(e.target) && !btn.contains(e.target)) closeMenu();
   });
 
   // Reset si on repasse en desktop
   window.addEventListener('resize', function () {
-    if (window.innerWidth > 720) { closeMenu(); }
+    if (window.innerWidth > 720) closeMenu();
   });
 
-  // Escape pour fermer
+  // ESC pour fermer
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') { closeMenu(); }
+    if (e.key === 'Escape') closeMenu();
   });
 });
