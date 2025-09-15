@@ -142,3 +142,57 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+// --- Cartes cliquables (avec protection sélection/drag/long-press) ---
+document.addEventListener('DOMContentLoaded', function () {
+  const CLICK_MOVE_TOL = 6;    // px
+  const LONG_PRESS_MS  = 350;  // ms
+
+  function hasSelection() {
+    try { return (window.getSelection && window.getSelection().toString().trim().length > 0); }
+    catch { return false; }
+  }
+
+  document.querySelectorAll('.card[data-href]').forEach(card => {
+    if (card.dataset.clickableBound) return; // idempotent
+    const url = card.getAttribute('data-href');
+    if (!url) return;
+
+    card.dataset.clickableBound = '1';
+    card.classList.add('is-clickable');
+    card.setAttribute('role', 'link');
+    card.setAttribute('tabindex', '0');
+
+    let downX = 0, downY = 0, downT = 0;
+
+    function go(e){
+      const meta = (e && (e.metaKey || e.ctrlKey)) ? '_blank' : null;
+      const target = card.getAttribute('data-target') || meta || '_self';
+      window.open(url, target);
+    }
+
+    card.addEventListener('pointerdown', (e) => {
+      if (e.target.closest('a, button, input, textarea, select, summary, [contenteditable]')) return;
+      downX = e.clientX; downY = e.clientY; downT = performance.now();
+    });
+
+    card.addEventListener('pointerup', (e) => {
+      if (e.target.closest('a, button, input, textarea, select, summary, [contenteditable]')) return;
+      const dx = Math.abs(e.clientX - downX);
+      const dy = Math.abs(e.clientY - downY);
+      const moved = (dx + dy) > CLICK_MOVE_TOL;
+      const longPress = (performance.now() - downT) > LONG_PRESS_MS;
+      if (hasSelection() || moved || longPress) return; // ne pas naviguer
+      go(e);
+    });
+
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        if (hasSelection()) return;
+        go(e);
+      }
+    });
+  });
+});
+
+
