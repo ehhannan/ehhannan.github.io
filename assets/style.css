@@ -211,3 +211,16 @@ body {
 .brand { font-size: 1rem; }
 .brand span { font-size: 1rem; line-height: 1; }
 
+/* Améliorations mobile */
+@media (max-width: 720px){
+  html{ font-size: 100%; }                /* lisible sans zoom excessif */
+  .nav{ flex-wrap: wrap; height: auto; gap: 8px; padding: 8px 0; }
+  .brand img{ width: 32px; height: 32px; }
+  .menu{ width: 100%; justify-content: space-between; flex-wrap: wrap; gap: 10px 12px; }
+  .menu a{ padding: 8px 0; }              /* meilleure zone tactile */
+  .hero{ grid-template-columns: 1fr; padding: 24px 0 12px; gap: 16px; }
+  .avatar{ width: 96px; height: 96px; }
+  .card{ padding: 14px; }
+}
+
+
