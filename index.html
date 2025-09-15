@@ -13,32 +13,26 @@
 <body>
   
 <header class="header">
-  <div class="container nav">
-    <!-- Brand -->
-    <div class="brand">
-      <img src="assets/ed2025.jpg" alt="Portrait" />
-      <span>Edward Hallé-Hannan</span>
-    </div>
+  <div class="brand">
+  <img src="assets/ed2025.jpg" alt="Portrait" />
+  <span>Edward Hallé-Hannan</span>
+</div>
 
-    <!-- Hamburger natif (mobile seulement via CSS) -->
-    <details class="menu-wrap">
-      <summary class="menu-toggle" aria-label="Open menu">
-        <!-- icône -->
-        <i class="fa-solid fa-bars"></i>
-        <span class="sr-only">Menu</span>
-      </summary>
+<!-- HAMBURGER CSS-ONLY -->
+<input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
+<label for="nav-toggle" class="menu-toggle" aria-label="Open menu">
+  <i class="fa-solid fa-bars"></i>
+</label>
 
-      <!-- Menu déroulant -->
-      <nav id="site-menu" class="menu" aria-label="Primary">
-        <a href="index.html" class="active">About me</a>
-        <a href="publications.html">Publications</a>
-        <a href="talks.html">Talks</a>
-        <a href="awards.html">Awards</a>
-        <a href="supervision.html">Supervision</a>
-        <a href="teaching.html">Teaching</a>
-      </nav>
-    </details>
-  </div>
+<nav id="site-menu" class="menu" aria-label="Primary">
+  <a href="index.html" class="active">About me</a>
+  <a href="publications.html">Publications</a>
+  <a href="talks.html">Talks</a>
+  <a href="awards.html">Awards</a>
+  <a href="supervision.html">Supervision</a>
+  <a href="teaching.html">Teaching</a>
+</nav>
+
 </header>
 
 
