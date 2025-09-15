@@ -4,14 +4,73 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>404 — Page Not Found</title>
-  <link rel="stylesheet" href="assets/style.css?v=3">
-  <script src="assets/script.js?v=20" defer></script>
+  <meta name="description" content="404 — Page Not Found" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css?v=21">
+  <script src="assets/script.js?v=21" defer></script>
+
+  <!-- Mini styles locaux pour centrer et styliser l'ASCII -->
+  <style>
+    .center { display: grid; place-items: center; text-align: center; padding: 3rem 0; }
+    .oops { color: var(--muted); margin: 0.25rem 0 1rem; font-size: 1rem; }
+    .ascii { 
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 2rem; line-height: 1; margin: .25rem 0 1.25rem; 
+    }
+    .actions { display: flex; gap: .5rem; flex-wrap: wrap; justify-content: center; }
+    .actions .chip { text-decoration: none; }
+  </style>
 </head>
 <body>
-  <div class="container" style="padding:60px 0">
-    <h1>404</h1>
-    <p>The page you are looking for could not be found. <a href="index.html">Return to homepage</a>.</p>
+
+<header class="header">
+  <div class="container nav">
+    <div class="brand">
+      <img src="assets/ed2025.jpg" alt="Portrait" />
+      <span>Edward Hallé-Hannan</span>
+    </div>
+
+    <!-- Hamburger -->
+    <button class="menu-toggle" aria-controls="site-menu" aria-expanded="false" aria-label="Open menu">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
+
+    <!-- Nav -->
+    <nav id="site-menu" class="menu" aria-label="Primary">
+      <a href="index.html">About me</a>
+      <a href="publications.html">Publications</a>
+      <a href="talks.html">Talks</a>
+      <a href="awards.html">Awards</a>
+      <a href="supervision.html">Supervision</a>
+      <a href="teaching.html">Teaching</a>
+    </nav>
   </div>
+</header>
+
+<main class="container">
+  <section class="section">
+    <div class="card center">
+      <h1 class="item-title" style="margin:0;">404 — Page not found</h1>
+      <p class="oops">Oops, wrong page.</p>
+      <div class="ascii" aria-hidden="true">(͡ ° ͜ʖ ͡ °)</div>
+      <p class="item-meta" style="margin:0 0 1rem;">
+        The page you’re looking for doesn’t exist or has moved.
+      </p>
+      <div class="actions">
+        <a class="chip" href="index.html">← Back to homepage</a>
+        <a class="chip" href="publications.html">Publications</a>
+        <a class="chip" href="talks.html">Talks</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">© 2025 Edward Hallé-Hannan</div>
+</footer>
+
 </body>
 </html>
+
 
