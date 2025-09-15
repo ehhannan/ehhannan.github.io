@@ -417,3 +417,17 @@ body {
   }
 }
 
+/* Uniformisation stricte des 3 barres du hamburger */
+@media (max-width: 800px){
+  .menu-toggle .bar{
+    display: block !important;
+    width: 24px !important;
+    height: 3px !important;
+    background-color: var(--text) !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border-radius: 2px !important;
+    box-shadow: none !important;
+  }
+}
