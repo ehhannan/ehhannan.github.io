@@ -195,3 +195,16 @@ body {
   font-size: 20px;
 }
 
+/* Adjust titles vs paragraphs inside cards */
+.item-title {
+  font-size: 1.15rem;   /* plus gros que le texte normal */
+  font-weight: 600;
+}
+
+.card p {
+  font-size: 0.95rem;   /* légèrement plus petit que le texte normal */
+  margin-top: 0.4rem;
+  margin-bottom: 0;
+}
+
+
