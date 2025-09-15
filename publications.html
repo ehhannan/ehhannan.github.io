@@ -7,8 +7,18 @@
   <meta name="description" content="Publications" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/style.css?v=3">
-  <script src="assets/script.js?v=3" defer></script>
+  <link rel="stylesheet" href="assets/style.css?v=14">
+  <script src="assets/script.js?v=14" defer></script>
+
+  <!-- (Optionnel) Un tout petit style pour le curseur et le focus des cartes cliquables -->
+  <style>
+    .card.is-clickable { cursor: pointer; }
+    .card.is-clickable:focus {
+      outline: 2px solid var(--hover);
+      outline-offset: 3px;
+      border-radius: 0.875rem;
+    }
+  </style>
 </head>
 <body>
 <header class="header">
@@ -37,82 +47,110 @@
   </div>
 </header>
 
+<main class="container">
 
+  <!-- First-author publications -->
+  <section class="section">
+    <h2>First-author publications</h2>
+    <div class="list">
+      <!-- Pas d'URL connue → carte non cliquable -->
+      <article class="card">
+        <div class="item-title">Surrogate-based categorical neighborhoods for mixed-variable blackbox optimization</div>
+        <div class="item-meta">C. Audet, Y. Diouane, E. Hallé-Hannan, S. Le Digabel, C. Tribes (2025).</div>
+        <p>In preparation.</p>
+      </article>
 
-  <main class="container">
+      <!-- Carte cliquable vers arXiv -->
+      <article class="card" data-href="https://arxiv.org/abs/2506.06937" data-target="_blank">
+        <div class="item-title">CatMADS: Mesh adaptive direct-search for constrained blackbox optimization with categorical variables</div>
+        <div class="item-meta">C. Audet, Y. Diouane, E. Hallé-Hannan, S. Le Digabel, C. Tribes (2025).</div>
+        <p>Submitted to <em>SIAM Journal on Optimization (SIOPT)</em>. Preprint: arXiv:2506.06937.</p>
+      </article>
 
-    <!-- First-author publications -->
-    <section class="section">
-      <h2>First-author publications</h2>
-      <div class="list">
-        <article class="card">
-          <div class="item-title">Surrogate-based categorical neighborhoods for mixed-variable blackbox optimization</div>
-          <div class="item-meta">C. Audet, Y. Diouane, E. Hallé-Hannan, S. Le Digabel, C. Tribes (2025).</div>
-          <p>In preparation.</p>
-        </article>
+      <!-- Carte cliquable vers DOI -->
+      <article class="card" data-href="https://doi.org/10.1016/j.neucom.2025.131208" data-target="_blank">
+        <div class="item-title">A distance for mixed-variable and hierarchical domains with meta variables</div>
+        <div class="item-meta">E. Hallé-Hannan, C. Audet, Y. Diouane, S. Le Digabel, P. Saves (2025). 
+          <em>Neurocomputing</em> 653, 131208.
+        </div>
+        <p>DOI: 10.1016/j.neucom.2025.131208</p>
+      </article>
 
-        <article class="card">
-          <div class="item-title"><a href="https://arxiv.org/abs/2506.06937" target="_blank" rel="noopener">CatMADS: Mesh adaptive direct-search for constrained blackbox optimization with categorical variables</a></div>
-          <div class="item-meta">C. Audet, Y. Diouane, E. Hallé-Hannan, S. Le Digabel, C. Tribes (2025).</div>
-          <p>Submitted to <em>SIAM Journal on Optimization (SIOPT)</em>. Preprint: arXiv:2506.06937.
-          </p>
-        </article>
+      <!-- Carte cliquable vers DOI -->
+      <article class="card" data-href="https://doi.org/10.1007/s43069-022-00180-6" data-target="_blank">
+        <div class="item-title">A General Mathematical Framework for Constrained Mixed-variable Blackbox Optimization Problems with Meta and Categorical Variables</div>
+        <div class="item-meta">C. Audet, E. Hallé-Hannan, S. Le Digabel (2023). <em>Operations Research Forum</em> 4(12).</div>
+        <p>DOI: 10.1007/s43069-022-00180-6</p>
+      </article>
+    </div>
+  </section>
 
-        <article class="card">
-          <div class="item-title">A distance for mixed-variable and hierarchical domains with meta variables</div>
-          <div class="item-meta">E. Hallé-Hannan, C. Audet, Y. Diouane, S. Le Digabel, P. Saves (2025). 
-            <em>Neurocomputing</em> 653, 131208.
-          </div>
-          <p>
-            DOI: <a href="https://doi.org/10.1016/j.neucom.2025.131208" target="_blank" rel="noopener">10.1016/j.neucom.2025.131208</a> 
-          </p>
-        </article>
+  <!-- Co-author publications -->
+  <section class="section">
+    <h2>Co-author publications</h2>
+    <div class="list">
+      <!-- Carte cliquable vers arXiv -->
+      <article class="card" data-href="https://arxiv.org/abs/2506.22621" data-target="_blank">
+        <div class="item-title">Hierarchical Modeling and Architecture Optimization: Review and Unified Framework</div>
+        <div class="item-meta">P. Saves, E. Hallé-Hannan, J. Bussemaker, Y. Diouane (2025).</div>
+        <p>Submitted to <em>Advances in Engineering Software</em>. Preprint: arXiv:2506.22621.</p>
+      </article>
+    </div>
+  </section>
 
-        <article class="card">
-          <div class="item-title">A General Mathematical Framework for Constrained Mixed-variable Blackbox Optimization Problems with Meta and Categorical Variables</div>
-          <div class="item-meta">C. Audet, E. Hallé-Hannan, S. Le Digabel (2023). <em>Operations Research Forum</em> 4(12).</div>
-          <p>
-            DOI: <a href="https://doi.org/10.1007/s43069-022-00180-6" target="_blank" rel="noopener">10.1007/s43069-022-00180-6</a>
-          </p>
-        </article>
-      </div>
-    </section>
+  <!-- Technical reports -->
+  <section class="section">
+    <h2>Technical reports</h2>
+    <div class="list">
+      <!-- Carte cliquable vers le manuscrit GERAD -->
+      <article class="card" data-href="https://www.gerad.ca/fr/papers/G-2025-39" data-target="_blank">
+        <div class="item-title">Cat-Suite: A collection of optimization problems with categorical and quantitative variables for benchmarking</div>
+        <div class="item-meta">E. Hallé-Hannan, C. Audet, Y. Diouane, S. Le Digabel, C. Tribes (2025).</div>
+        <p>Rapport technique, <em>Les cahiers du GERAD</em>. Manuscript: G-2025-39.</p>
+      </article>
+    </div>
+  </section>
 
-    <!-- Co-author publications -->
-    <section class="section">
-      <h2>Co-author publications</h2>
-      <div class="list">
-        <article class="card">
-          <div class="item-title">Hierarchical Modeling and Architecture Optimization: Review and Unified Framework</div>
-          <div class="item-meta">P. Saves, E. Hallé-Hannan, J. Bussemaker, Y. Diouane (2025).</div>
-          <p>
-            Submitted to <em>Advances in Engineering Software</em>. Preprint: 
-            <a href="https://arxiv.org/abs/2506.22621" target="_blank" rel="noopener">arXiv:2506.22621</a>.
-          </p>
-        </article>
-      </div>
-    </section>
+</main>
 
-    <!-- Technical reports -->
-    <section class="section">
-      <h2>Technical reports</h2>
-      <div class="list">
-        <article class="card">
-          <div class="item-title">Cat-Suite: A collection of optimization problems with categorical and quantitative variables for benchmarking</div>
-          <div class="item-meta">E. Hallé-Hannan, C. Audet, Y. Diouane, S. Le Digabel, C. Tribes (2025).</div>
-          <p>
-            Rapport technique, <em>Les cahiers du GERAD</em>. Manuscript: <a href="https://www.gerad.ca/fr/papers/G-2025-39" target="_blank" rel="noopener">G-2025-39</a>.
-          </p>
-        </article>
-      </div>
-    </section>
+<footer class="footer">
+  <div class="container">© 2025 Edward Hallé-Hannan</div>
+</footer>
 
-  </main>
+<!-- JS local pour rendre les cartes cliquables (idempotent) -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.card[data-href]').forEach(card => {
+    if (card.dataset.clickableBound) return; // évite double binding si script.js fait déjà la même chose
+    const url = card.getAttribute('data-href');
+    if (!url) return;
 
-  <footer class="footer">
-    <div class="container">© 2025 Edward Hallé-Hannan</div>
-  </footer>
-  <script src="assets/script.js"></script>
+    card.dataset.clickableBound = '1';
+    card.classList.add('is-clickable');
+    card.setAttribute('role', 'link');
+    card.setAttribute('tabindex', '0'); // focus clavier
+
+    function go(e){
+      const meta = (e && (e.metaKey || e.ctrlKey)) ? '_blank' : null;
+      const target = card.getAttribute('data-target') || meta || '_self';
+      window.open(url, target);
+    }
+
+    // Clic sur la carte, sauf si clic sur un contrôle interne
+    card.addEventListener('click', (e) => {
+      if (e.target.closest('a, button, input, textarea, select, summary')) return;
+      go(e);
+    });
+
+    // Activation clavier (Enter ou Espace)
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        go(e);
+      }
+    });
+  });
+});
+</script>
 </body>
 </html>
-<script src="assets/script.js?v=13"></script>
