@@ -83,3 +83,30 @@ document.addEventListener('DOMContentLoaded', function () {
   // État initial
   setAria(false);
 });
+
+// --- Bouton "remonter en haut" ---
+document.addEventListener('DOMContentLoaded', function () {
+  const btn = document.createElement('button');
+  btn.className = 'to-top';
+  btn.type = 'button';
+  btn.setAttribute('aria-label', 'Remonter en haut');
+  btn.innerHTML = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path fill="currentColor" d="M7.41 14.59 12 10l4.59 4.59 1.41-1.41L12 7.17 6 13.18z"/>
+    </svg>
+  `;
+  document.body.appendChild(btn);
+
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const onScroll = () => {
+    if (window.scrollY > 300) btn.classList.add('show');
+    else btn.classList.remove('show');
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' });
+  });
+});
+
