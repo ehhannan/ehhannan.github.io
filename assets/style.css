@@ -546,3 +546,30 @@ body {
 .lead a:focus-visible {
   color: var(--hover);
 }
+
+/* --- Bouton "remonter en haut" --- */
+.to-top{
+  position: fixed;
+  right: 1rem; bottom: 1rem;
+  width: 42px; height: 42px;
+  border-radius: 9999px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--text);
+  box-shadow: var(--shadow);
+  display: inline-flex;
+  align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transform: translateY(8px);
+  transition: opacity .2s ease, transform .2s ease;
+  z-index: 40;
+}
+.to-top:hover{ color: var(--hover); transform: translateY(0); }
+.to-top.show{ opacity: 1; pointer-events: auto; transform: translateY(0); }
+.to-top svg{ width: 18px; height: 18px; }
+
+/* un poil plus compact sur mobile */
+@media (max-width: 880px){
+  .to-top{ right: .75rem; bottom: .75rem; width: 40px; height: 40px; }
+}
+
