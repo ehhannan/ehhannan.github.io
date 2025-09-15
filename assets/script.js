@@ -17,7 +17,7 @@
    Menu hamburger (+ animation X)
    ========================================================= */
 document.addEventListener('DOMContentLoaded', function () {
-  const BP = 800;
+  const BP = 880;
   const navContainer = document.querySelector('.header .container.nav') || document.querySelector('.nav');
   const menu = document.getElementById('site-menu') || document.querySelector('.menu');
   if (!navContainer || !menu) return;
