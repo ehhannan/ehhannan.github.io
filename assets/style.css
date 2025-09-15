@@ -229,7 +229,7 @@ body {
 }
 
 /* Règles hamburger sous 800px */
-@media (max-width: 800px){
+@media (max-width: 880px){
   /* Affiche le bouton, conserve ta barre de nav (4rem) */
   .menu-toggle{
     display: inline-flex;
