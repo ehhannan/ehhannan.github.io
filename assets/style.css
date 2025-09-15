@@ -347,3 +347,56 @@ body {
   .menu a{ padding: 12px 2px; border-radius: 8px; }
   .menu a:hover{ background: var(--chip); color: var(--text); }
 }
+
+/* Contexte */
+.nav { position: relative; }
+
+/* Par défaut (desktop) : on masque le "hamburger" et on affiche le menu inline */
+.menu-wrap { display:none; }
+.menu { display:flex; gap:18px; align-items:center; }
+
+/* MOBILE UNIQUEMENT */
+@media (max-width: 720px){
+  /* on montre le hamburger natif <summary> et on transforme le menu en panneau */
+  .menu-wrap { display:block; position: relative; }
+
+  /* hide le menu desktop si tu avais une autre .menu déjà visible */
+  .nav > .menu { display:none; } /* au cas où tu aurais gardé un ancien bloc */
+
+  .menu-toggle{
+    display:inline-flex; align-items:center; gap:8px;
+    border:1px solid var(--line); background:#fff; border-radius:10px;
+    padding:8px 10px; line-height:0; box-shadow:var(--shadow); cursor:pointer;
+    list-style: none; /* supprime le triangle natif dans certains navigateurs */
+  }
+  .menu-toggle::-webkit-details-marker { display: none; } /* triangle Safari/Chrome */
+
+  /* Panneau déroulant */
+  .menu-wrap .menu{
+    position:absolute; left:0; right:0; top:calc(100% + 6px);
+    display:none; flex-direction:column; gap:0;
+    background:rgba(255,255,255,0.98);
+    border-bottom:1px solid var(--line);
+    box-shadow:var(--shadow);
+    padding:6px 14px 10px;
+    backdrop-filter:saturate(180%) blur(8px);
+    z-index:30;
+  }
+  /* Quand <details open> est vrai, le menu s’affiche */
+  .menu-wrap[open] .menu{ display:flex; }
+
+  .menu a{ padding:12px 2px; border-radius:8px; }
+  .menu a:hover{ background:var(--chip); color:var(--text); }
+
+  /* Petite zone invisible pour cliquer en dehors si besoin (optionnel) */
+  .menu-wrap[open]::before{
+    content:""; position:fixed; inset:0; z-index:29;
+    background: transparent;
+  }
+}
+
+/* accessibilité – lecteur d’écran */
+.sr-only{
+  position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden;
+  clip:rect(0,0,0,0); white-space:nowrap; border:0;
+}
