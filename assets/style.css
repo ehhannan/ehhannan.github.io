@@ -333,5 +333,15 @@ body {
 .nav-toggle{
   /* si une autre feuille le force en display:none, ceci n’écrase pas,
      mais notre règle @media ci-dessus avec !important le fera. */
+
+  .menu-toggle .bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  margin: 5px 0;
+  background: var(--text);
+  transition: transform .2s ease, opacity .2s ease;
+}
+
 }
 
