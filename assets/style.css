@@ -581,3 +581,9 @@ body {
   border-radius: 0.875rem; /* même rayon que .card */
 }
 
+/* Menu horizontal (desktop) : texte un peu plus petit */
+@media (min-width: 881px){
+  .menu a{
+    font-size: 0.95rem;   /* essaie 0.90rem si tu veux plus petit */
+  }
+}
