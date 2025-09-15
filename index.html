@@ -14,28 +14,33 @@
   
 <header class="header">
   <div class="container nav">
-    <!-- Logo + Nom -->
+    <!-- Brand -->
     <div class="brand">
       <img src="assets/ed2025.jpg" alt="Portrait" />
       <span>Edward Hallé-Hannan</span>
     </div>
 
-    <!-- Bouton hamburger (mobile) -->
-    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Open menu">
-      <i class="fa-solid fa-bars"></i>
-    </button>
+    <!-- Hamburger natif (mobile seulement via CSS) -->
+    <details class="menu-wrap">
+      <summary class="menu-toggle" aria-label="Open menu">
+        <!-- icône -->
+        <i class="fa-solid fa-bars"></i>
+        <span class="sr-only">Menu</span>
+      </summary>
 
-    <!-- Menu principal -->
-    <nav id="site-menu" class="menu" aria-label="Primary">
-      <a href="index.html" class="active">About me</a>
-      <a href="publications.html">Publications</a>
-      <a href="talks.html">Talks</a>
-      <a href="awards.html">Awards</a>
-      <a href="supervision.html">Supervision</a>
-      <a href="teaching.html">Teaching</a>
-    </nav>
+      <!-- Menu déroulant -->
+      <nav id="site-menu" class="menu" aria-label="Primary">
+        <a href="index.html" class="active">About me</a>
+        <a href="publications.html">Publications</a>
+        <a href="talks.html">Talks</a>
+        <a href="awards.html">Awards</a>
+        <a href="supervision.html">Supervision</a>
+        <a href="teaching.html">Teaching</a>
+      </nav>
+    </details>
   </div>
 </header>
+
 
     
   <main class="container">
