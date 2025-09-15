@@ -573,3 +573,11 @@ body {
   .to-top{ right: .75rem; bottom: .75rem; width: 40px; height: 40px; }
 }
 
+/* Cartes cliquables */
+.card.is-clickable { cursor: pointer; }
+.card.is-clickable:focus {
+  outline: 2px solid var(--hover);
+  outline-offset: 3px;
+  border-radius: 0.875rem; /* même rayon que .card */
+}
+
