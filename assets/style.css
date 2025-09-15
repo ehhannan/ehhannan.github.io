@@ -212,7 +212,7 @@ body {
 .brand span { font-size: 1rem; line-height: 1; }
 
 /* Améliorations mobile */
-@media (max-width: 720px){
+@media (max-width: 880px){
   html{ font-size: 100%; }                /* lisible sans zoom excessif */
   .nav{ flex-wrap: wrap; height: auto; gap: 8px; padding: 8px 0; }
   .brand img{ width: 32px; height: 32px; }
@@ -227,7 +227,7 @@ body {
 .menu-toggle{ display:none; }
 
 /* ----- Mobile: hamburger uniquement ----- */
-@media (max-width: 720px){
+@media (max-width: 880px){
   .nav{ flex-wrap: wrap; height:auto; gap:8px; padding:8px 0; }
   .menu-toggle{
     display:inline-flex; align-items:center; gap:8px;
@@ -283,7 +283,7 @@ body {
 .menu-toggle { display: none; }
 
 /* ----- MOBILE UNIQUEMENT ----- */
-@media (max-width: 800px){
+@media (max-width: 880px){
   .nav{ flex-wrap: wrap; height:auto; gap:8px; padding:8px 0; }
 
   .menu-toggle{
@@ -318,7 +318,7 @@ body {
 .menu-toggle { display: none; }
 
 /* MOBILE UNIQUEMENT — élargissons un peu le seuil pour tester (900px) */
-@media (max-width: 800px){
+@media (max-width: 880px){
   /* le bouton apparaît */
   .menu-toggle{
     display: inline-flex !important;
