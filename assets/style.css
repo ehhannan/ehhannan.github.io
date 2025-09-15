@@ -268,3 +268,20 @@ body {
 
 /* (Supprimé) Ancien PATCH qui bloquait le hamburger et cachait le bouton */
 /* Il neutralisait .menu.open et .menu-toggle — on ne le remet pas */
+
+/* Assure la visibilité du bouton sous 800 px */
+@media (max-width: 800px){
+  .menu-toggle{ display: inline-flex !important; align-items: center; justify-content: center; }
+}
+
+/* Cache l’underscore de l’onglet actif quand le menu est replié en mobile */
+@media (max-width: 800px){
+  .menu a.active::after{ display: none; }
+}
+
+/* (sécurité) Forcer le menu fermé par défaut en mobile */
+@media (max-width: 800px){
+  .menu{ display: none; }
+  .menu.open{ display: flex; }
+}
+
