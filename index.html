@@ -8,8 +8,8 @@
   <meta name="description" content="About me - Edward Hallé-Hannan" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/style.css?v=3">
-  <script src="assets/script.js?v=3" defer></script>
+  <link rel="stylesheet" href="assets/style.css?v=15">
+  <script src="assets/script.js?v=15" defer></script>
 
   <!-- (Optionnel) curseur + focus pour cartes cliquables -->
   <style>
@@ -116,35 +116,5 @@
 <footer class="footer">
   <div class="container">© 2025 Edward Hallé-Hannan</div>
 </footer>
-
-<!-- Mini-script idempotent pour activer UNIQUEMENT les cartes avec data-href -->
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-  document.querySelectorAll('.card[data-href]').forEach(card => {
-    if (card.dataset.clickableBound) return;
-    const url = card.getAttribute('data-href');
-    if (!url) return;
-
-    card.dataset.clickableBound = '1';
-    card.classList.add('is-clickable');
-    card.setAttribute('role', 'link');
-    card.setAttribute('tabindex', '0');
-
-    function go(e){
-      const meta = (e && (e.metaKey || e.ctrlKey)) ? '_blank' : null;
-      const target = card.getAttribute('data-target') || meta || '_self';
-      window.open(url, target);
-    }
-
-    card.addEventListener('click', (e) => {
-      if (e.target.closest('a, button, input, textarea, select, summary')) return;
-      go(e);
-    });
-    card.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(e); }
-    });
-  });
-});
-</script>
 </body>
 </html>
